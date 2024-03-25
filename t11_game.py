@@ -31,10 +31,11 @@ class Game:
         self.running = True
         pygame.init()
         self.screen = pygame.display.set_mode(self.size)
-        self.clock = pygame.time.Clock()
-        self.player = Player(self.size)
-        self.good_npc = NPC(self.size)
         self.screen.fill('#9CBEBA')
+        self.clock = pygame.time.Clock()
+        self.tuna = Player(self.size)
+        self.tacocat = NPC(self.size)
+
 
     def run(self):
         """
@@ -48,20 +49,19 @@ class Game:
                 if event.type == pygame.QUIT:
                     self.running = False
 
-            # Handle events from the user next
-
-
-            # Handle game events next
-            if pygame.sprite.spritecollide(self.player, [self.good_npc], False):
+            # Handle user and game events next
+            if pygame.sprite.spritecollide(self.tuna, [self.tacocat], False):
+                # Prints the game ending text to the screen
                 font = pygame.font.SysFont("ComicSans", 36)
-                img = font.render('You caught me!', True, "blue")
-                self.screen.blit(img, (self.size[0]//2, self.size[1]-100))
+                txt = font.render('You caught me!', True, "darkblue")
+                self.screen.blit(txt, (self.size[0]//2, self.size[1]-100))
             else:
-                self.player.movement(pygame.key.get_pressed())
-                self.good_npc.movement()
+                # Keep playing!
+                self.tuna.movement(pygame.key.get_pressed())
+                self.tacocat.movement()
                 self.screen.fill('#9CBEBA')
-                self.screen.blit(self.player.surf, self.player.rect)
-                self.screen.blit(self.good_npc.surf, self.good_npc.rect)
+                self.screen.blit(self.tuna.surf, self.tuna.rect)
+                self.screen.blit(self.tacocat.surf, self.tacocat.rect)
             pygame.display.update()
             self.clock.tick(24)
 

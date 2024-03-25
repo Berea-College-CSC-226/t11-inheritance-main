@@ -20,7 +20,7 @@ import pygame, random
 
 
 class NPC(pygame.sprite.Sprite):
-    move_distance = 5
+    move_distance = 10
     directions = ["north", "east", "south", "west"]
 
     def __init__(self, screen_size):
@@ -32,15 +32,14 @@ class NPC(pygame.sprite.Sprite):
         print("Spawning NPC")
         self.screen_size = screen_size
         super().__init__()
-        self.surf = pygame.image.load('images/bad_cat.png').convert_alpha()
+        self.surf = pygame.image.load('images/tacocat.png').convert_alpha()
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//4, self.screen_size[1]//4)
-        self.direction = pygame.math.Vector2()
         self.path = random.choice(self.directions)
         self.position = [0,0]
 
-    def random_direction(self):
+    def get_direction(self):
         """
         Keeps the NPC on the screen.
 
@@ -54,7 +53,7 @@ class NPC(pygame.sprite.Sprite):
             self.path = "east"
         if self.rect.right >= self.screen_size[0]:
             self.path = "west"
-        elif (random.random() > .95):
+        elif random.random() > .95:
             self.path = random.choice(self.directions)
 
     def movement(self):
@@ -76,4 +75,4 @@ class NPC(pygame.sprite.Sprite):
             self.rect.move_ip(-self.move_distance, 0)
             self.position[0] += self.move_distance
 
-        self.random_direction()
+        self.get_direction()

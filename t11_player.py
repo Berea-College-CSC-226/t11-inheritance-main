@@ -29,11 +29,11 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         self.screen_size = screen_size
         print("Spawning player")
-        self.surf = pygame.image.load('images/cat.png').convert_alpha()
+        self.surf = pygame.image.load('images/tuna.png').convert_alpha()
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0]//2, self.screen_size[1]//2)
-        self.direction = pygame.math.Vector2()
+
 
     def movement(self, keys):
         """
@@ -44,12 +44,12 @@ class Player(pygame.sprite.Sprite):
         :return: None
         """
         if keys[pygame.K_UP]:
-            self.rect.move_ip(0, -5)
+            self.rect.move_ip(0, -3)
         elif keys[pygame.K_DOWN]:
-            self.rect.move_ip(0, 5)
+            self.rect.move_ip(0, 3)
         if keys[pygame.K_RIGHT]:
-            self.rect.move_ip(5, 0)
+            self.rect.move_ip(3, 0)
         elif keys[pygame.K_LEFT]:
-            self.rect.move_ip(-5, 0)
+            self.rect.move_ip(-3, 0)
 
 
