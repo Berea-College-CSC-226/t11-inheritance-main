@@ -36,7 +36,6 @@ class Game:
         self.good_npc = NPC(self.size)
         self.screen.fill('#9CBEBA')
 
-
     def run(self):
         """
         Runs the game forever
@@ -67,6 +66,7 @@ class Game:
             self.clock.tick(24)
 
         pygame.quit()
+
 
 def main():
     """
