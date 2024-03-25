@@ -93,6 +93,52 @@ In your own words, describe how the four items above are accomplished in the Gam
 
 ## SECTION 4: Implementing Inheritance
 
-**Q9**: Using t11_NPC.py as a starting point, create a new class called `Good_NPC`. Have the new class inherit from 
-    the NPC class that I gave you, including calling the parent class's initializer. Convert **t11_game.py** so that it 
-    spawns Taco Cat as a Good_NPC instead of an NPC. The program should work, at this point. 
+Using **t11_NPC.py** as a starting point, create a new class called `Good_NPC` (you can do this in the **t11_NPC.py** 
+file, or create a new file; your choice). Have the new class inherit from the NPC class that I gave you, including calling 
+the parent class's initializer. Convert **t11_game.py** so that it spawns Taco Cat as a Good_NPC instead of an NPC. 
+Debug any errors you get; the program should work, at this point. 
+
+**Q9**: How hard was it to create the child class, given the parent?
+
+```
+    **Replace This Text With Your Response**
+```
+
+The parent class `NPC` currently holds attributes, like the image used, which are actually more specific to 
+`Good_NPC` now. Refactor the code so that you can indicate the image for Good_NPCs and Evil NPCs (coming next)
+inside the child classes, instead of the parent class. There are multiple ways to accomplish this; discuss with your 
+partner first how you would like to approach this problem. 
+
+Next, implement another new class called `Bad_NPC` (again, you can do this in the **t11_NPC.py** 
+file, or create a new file; your choice). Our bad NPC (Whiskers) is going to march around the screen in a different way
+than our friend Taco Cat; he should move like a Boustrophedon, working his way across the entire screen, before 
+moving up or down. Because this NPCs movement is significantly different from the Good NPCs movement, we should 
+make a design choice. We could:
+    a) keep the `movement` method in NPC, and override it inside `Bad_NPC` with a new method.
+    b) remove `movement` from NPC, and implement separate `movement` functions in each child class.
+    c) refactor `movement` in NPC, so it can handle both child class options.
+
+**Q10**: Discuss with your partner your design choice above, including their pros and cons. Document your 
+choice, and why, below: 
+
+```
+    **Replace This Text With Your Response**
+```
+
+Finally, we need to add create our enemy, Whiskers. Update **t11_game.py** to:
+    a) spawn whiskers at the beginning of the game
+    b) make Whiskers move around the screen
+    c) handle collisions between Tuna and Whiskers, which ends the game
+    d) (optional) handle collisions between Taco Cat and Whiskers, which kills Whiskers and spawns a new evil NPC
+
+---
+
+## SECTION 5: Final Thoughts
+
+**Q11**: Inheritance allows us to produce special cases of a class, extending their functionality. Describe
+    what challenges you faced while implementing the child classes that extended the `NPC` class. 
+    How did you overcome them?
+
+```
+    **Replace This Text With Your Response**
+```
