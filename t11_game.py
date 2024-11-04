@@ -4,7 +4,6 @@
 #
 # Assignment: T11: The Legend of Tuna: Breath of Catnip
 #
-#
 # Purpose: Learn about classes, inheritance, and Pygame
 ######################################################################
 # Acknowledgements:
