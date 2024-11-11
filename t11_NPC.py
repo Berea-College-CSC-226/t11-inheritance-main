@@ -88,6 +88,7 @@ class Bad_NPC(NPC):
         self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
         self.rect = self.surf.get_rect()
         self.rect.move_ip(self.screen_size[0] // 4, self.screen_size[1] // 4)
+        self.current_N_S = "south"
 
     def get_direction(self):
         """
@@ -95,7 +96,7 @@ class Bad_NPC(NPC):
 
         :return: None
         """
-        if self.rect.bottom >= self.screen_size[1]: #or self.rect.top <= 0:
+        if self.rect.bottom >= self.screen_size[1]:
             if self.rect.left <= self.screen_size[0]//2:
                 self.path = "east"
             else:
@@ -105,36 +106,35 @@ class Bad_NPC(NPC):
                 self.path = "east"
             else:
                 self.path = "west"
-        if self.rect.left <= 0:# or self.rect.right >= self.screen_size[0]:
-            if self.rect.bottom >= self.screen_size[1]//2:
-                self.path = "north"
-            else:
-                self.path = "south"
+        if self.rect.left <= 0 or self.rect.right >= self.screen_size[0]:
+            self.path = self.current_N_S
+        if self.rect.bottom >= self.screen_size[1]:
+            self.current_N_S = "north"
+            self.path = self.current_N_S
+        elif self.rect.top <= 0:
+            self.current_N_S = "south"
+            self.path = self.current_N_S
+
+
 
     def movement(self):
         if self.path == "north":
-            if random.random() > .75:
-                if self.current_E_W_dir == "east":
-                    self.current_E_W_dir = "west"
+            self.rect.move_ip(0, -self.move_distance)
+            if random.random() > .55:
+                if self.rect.left <= self.screen_size[0] // 2:
+                    self.path = "east"
                 else:
-                    self.current_E_W_dir == "east"
-                self.path = self.current_E_W_dir
-            else:
-                self.rect.move_ip(0, -self.move_distance)
+                    self.path = "west"
         elif self.path == "south":
-            if random.random() > .75:
-                if self.current_E_W_dir == "east":
-                    self.current_E_W_dir = "west"
+            self.rect.move_ip(0, self.move_distance)
+            if random.random() > .55:
+                if self.rect.left <= self.screen_size[0] // 2:
+                    self.path = "east"
                 else:
-                    self.current_E_W_dir == "east"
-                self.path = self.current_E_W_dir
-            else:
-                self.rect.move_ip(0, self.move_distance)
+                    self.path = "west"
         if self.path == "east":
             self.rect.move_ip(self.move_distance, 0)
-            self.position[0] -= self.move_distance
         if self.path == "west":
             self.rect.move_ip(-self.move_distance, 0)
-            self.position[0] += self.move_distance
 
         self.get_direction()
