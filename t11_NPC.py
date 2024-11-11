@@ -75,3 +75,66 @@ class NPC(pygame.sprite.Sprite):
             self.position[0] += self.move_distance
 
         self.get_direction()
+
+
+class Good_NPC(NPC):
+    def __init__(self, screen_size):
+        super().__init__(screen_size)
+
+class Bad_NPC(NPC):
+    def __init__(self, screen_size):
+        super().__init__(screen_size)
+        self.surf = pygame.image.load('images/whiskers.png').convert_alpha()
+        self.surf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
+        self.rect = self.surf.get_rect()
+        self.rect.move_ip(self.screen_size[0] // 4, self.screen_size[1] // 4)
+
+    def get_direction(self):
+        """
+        Keeps the NPC on the screen.
+
+        :return: None
+        """
+        if self.rect.bottom >= self.screen_size[1]: #or self.rect.top <= 0:
+            if self.rect.left <= self.screen_size[0]//2:
+                self.path = "east"
+            else:
+                self.path = "west"
+        if self.rect.top <= 0:
+            if self.rect.left <= self.screen_size[0]//2:
+                self.path = "east"
+            else:
+                self.path = "west"
+        if self.rect.left <= 0:# or self.rect.right >= self.screen_size[0]:
+            if self.rect.bottom >= self.screen_size[1]//2:
+                self.path = "north"
+            else:
+                self.path = "south"
+
+    def movement(self):
+        if self.path == "north":
+            if random.random() > .75:
+                if self.current_E_W_dir == "east":
+                    self.current_E_W_dir = "west"
+                else:
+                    self.current_E_W_dir == "east"
+                self.path = self.current_E_W_dir
+            else:
+                self.rect.move_ip(0, -self.move_distance)
+        elif self.path == "south":
+            if random.random() > .75:
+                if self.current_E_W_dir == "east":
+                    self.current_E_W_dir = "west"
+                else:
+                    self.current_E_W_dir == "east"
+                self.path = self.current_E_W_dir
+            else:
+                self.rect.move_ip(0, self.move_distance)
+        if self.path == "east":
+            self.rect.move_ip(self.move_distance, 0)
+            self.position[0] -= self.move_distance
+        if self.path == "west":
+            self.rect.move_ip(-self.move_distance, 0)
+            self.position[0] += self.move_distance
+
+        self.get_direction()
