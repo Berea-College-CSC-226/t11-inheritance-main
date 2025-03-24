@@ -45,14 +45,19 @@ class NPC(pygame.sprite.Sprite):
         :return: None
         """
         if self.rect.bottom >= self.screen_size[1]:
+            # Bottom
             self.path = "north"
         if self.rect.top <= 0:
+            # Top
             self.path = "south"
         if self.rect.left <= 0:
+            # Left
             self.path = "east"
         if self.rect.right >= self.screen_size[0]:
+            # Right
             self.path = "west"
         elif random.random() > .95:
+            # Randomly change direction 5% of the time
             self.path = random.choice(self.directions)
 
     def movement(self):

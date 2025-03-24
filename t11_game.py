@@ -50,9 +50,9 @@ class Game:
 
             # Handle user and game events next
             if pygame.sprite.spritecollide(self.tuna, [self.tacocat], False):
-                # Prints the game ending text to the screen
+                # Collision! Prints the game ending text to the screen.
                 font = pygame.font.SysFont("ComicSans", 36)
-                txt = font.render('You caught me!', True, "darkblue")
+                txt = font.render('Taco, you caught me!!', True, "darkblue")
                 self.screen.blit(txt, (self.size[0]//2, self.size[1]-100))
             else:
                 # Keep playing!
@@ -75,7 +75,6 @@ def main():
     """
     game = Game()
     game.run()
-
 
 if __name__ == "__main__":
     main()

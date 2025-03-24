@@ -40,7 +40,6 @@ class Player(pygame.sprite.Sprite):
         Handles up, down, left, right movement events from the user
 
         :param keys: key presses from pygame event listener
-
         :return: None
         """
         if keys[pygame.K_UP]:
@@ -51,5 +50,3 @@ class Player(pygame.sprite.Sprite):
             self.rect.move_ip(3, 0)
         elif keys[pygame.K_LEFT]:
             self.rect.move_ip(-3, 0)
-
-

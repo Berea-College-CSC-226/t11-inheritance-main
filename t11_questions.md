@@ -30,9 +30,11 @@ ___
 ```
 
 2.b. Look more closely at the **t11_game.py** file. There are 8 lines; identify if they are 
-    a) instance parameters, 
-    b) method calls within the class, or 
-    c) method calls to another class
+    a) instance parameters
+    b) method calls within the class
+    c) method calls to another class or library
+
+(Some are more than one answer!)
 
 ```
     self.size = 800, 600                              # **Replace This Text With Your Response**
@@ -45,7 +47,7 @@ ___
     self.screen.fill('#9CBEBA')                       # **Replace This Text With Your Response**
 ```
 
-2.c. Parse through the `run()` method of t11_game.py. In particular, note how the game handles 
+2.c. Parse through the `run()` method of **t11_game.py**. In particular, note how the game handles 
     a) collisions between the player and NPC,
     b) moving the player and NPC around the screen, 
     c) redrawing the player and NPC after they move,
@@ -54,7 +56,10 @@ ___
 In your own words, describe how the four items above are accomplished in the Game class:
 
 ```
-    **Replace This Text With Your Response**
+    a) **Replace This Text With Your Response**
+    b) **Replace This Text With Your Response**
+    c) **Replace This Text With Your Response**
+    d) **Replace This Text With Your Response**
 ```
 
 _Return to the Google Doc to continue the assignment._
@@ -63,8 +68,8 @@ _Return to the Google Doc to continue the assignment._
 
 ## SECTION 3
 
-3.a: First, take a look at the **t11_player.py**. What class does the `Player` class inherit functionality from? 
-    How do you know?
+3.a: Take a look at the **t11_player.py** file. What class does the `Player` class inherit functionality from? 
+     How do you know?
 
 ```
     **Replace This Text With Your Response**
@@ -101,6 +106,7 @@ _Return to the Google Doc to continue the assignment._
 ```
 
 _Return to the Google doc to continue the assignment._ 
+
 ---
 
 ## SECTION 4
@@ -116,7 +122,7 @@ instead of an NPC. Debug any errors you get; the program should work, at this po
     **Replace This Text With Your Response**
 ```
 
-The parent class `NPC` currently holds attributes, like the image used, which are actually more specific to 
+The parent class `NPC` currently holds attributes like the image used, which are actually more specific to 
 `Good_NPC` now. Refactor the code so that you can indicate the image for Good_NPCs and Evil NPCs (coming next)
 inside the child classes, instead of the parent class. There are multiple ways to accomplish this; discuss with your 
 partner first how you would like to approach this problem. 
@@ -131,13 +137,13 @@ make a design choice. We could:
     c) refactor `movement` in NPC, so it can handle both child class options.
 
 4.b. Discuss with your partner your design choice above, including their pros and cons. Document your 
-     choice, and why, below: 
+     choice and why: 
 
 ```
     **Replace This Text With Your Response**
 ```
 
-Finally, we need to create our enemy, Whiskers. Update **t11_game.py** to:
+Finally, we need to create our enemy object, Whiskers. Update **t11_game.py** to:
     a) spawn `whiskers` at the beginning of the game
     b) make `whiskers` move around the screen
     c) handle collisions between Tuna and Whiskers, which ends the game
